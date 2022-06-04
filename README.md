@@ -1,0 +1,2 @@
+# redsocial
+Simulacion Red Social
