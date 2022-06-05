@@ -1,0 +1,25 @@
+
+server:  
+  port: ${PORT:8083}
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+spring:
+  boot:
+      admin:
+         url: http://localhost:8090/
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    password: admin
+    url: jdbc:postgresql://localhost:5432/usuarios
+
+  jpa:
+    hibernate:
+      ddlAuto: validate
+      namingStrategy: org.hibernate.cfg.EJB3NamingStrategy
+    show-sql: true
+
