@@ -1,5 +1,6 @@
 package com.redsocial.taskservicecontratosv1.api;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,11 +77,19 @@ public class ContratosController {
 		return response;
 	}
 
-	@GetMapping("/contratos/solcitudes/{idSolicitud}")
+	@GetMapping("/contratos/solicitudes/{idSolicitud}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public TemplateResponse obtenerSolicitudById(@PathVariable("idVacante") String id) {
-		log.info(">>> contratos/v1 obtenerVacantesById ");
+	public TemplateResponse obtenerSolicitudById(@PathVariable("idSolicitud") String id) {
+		log.info(">>> contratos/v1 obtenerSolicitudById ");
 		Solicitudes solicitud = solicitudesServiceImpl.obtenerById(id);
+		return new TemplateResponse("Operación Exitosa", "200", solicitud);
+	}
+	
+	@GetMapping("/contratos/vacantes/{idVacante}/solicitudes")
+	@ResponseStatus(code = HttpStatus.OK)
+	public TemplateResponse obtenerSolicitudByIdVacante(@PathVariable("idVacante") String id) {
+		log.info(">>> contratos/v1 obtenerSolicitudByIdVacante ");
+		List<Solicitudes> solicitud = solicitudesServiceImpl.obtenerTodosByIdVacante(id);
 		return new TemplateResponse("Operación Exitosa", "200", solicitud);
 	}
 

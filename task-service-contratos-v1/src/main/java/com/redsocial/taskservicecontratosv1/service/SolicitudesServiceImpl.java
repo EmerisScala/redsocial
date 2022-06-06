@@ -1,5 +1,7 @@
 package com.redsocial.taskservicecontratosv1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class SolicitudesServiceImpl implements SolicitudesService {
 	public Solicitudes modificar(String id, SolicitudesDto solicitudesDto) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Solicitudes> obtenerTodosByIdVacante(String idVacante) {
+		return solicitudesRepository.findByIdVacante(idVacante)
+				.orElseThrow(() -> DatosNoEncontradasException.from("No se encontro informacion", idVacante));
 	}
 
 }
