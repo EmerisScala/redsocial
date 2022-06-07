@@ -19,10 +19,15 @@ eureka:
 ribbon:
   eureka:
     enabled: true
-
+    
 management:
-  security:
-    enabled: false #desactiva mecaniscos de actuator de spring
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
 security:
   basic:
@@ -36,6 +41,8 @@ spring:
   boot:
       admin:
          url: http://localhost:8090/
+         client:
+          url: http://localhost:8090/
   datasource:
     driver-class-name: org.postgresql.Driver
     username: admin

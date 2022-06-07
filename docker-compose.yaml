@@ -1,5 +1,13 @@
 version: '3.3'
 services:
+  discovery-server:
+    image: emerishdz/arquitectura-discovery-server:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+  monitor:
+    image: emerishdz/arquitectura-monitor-server:0.0.1-SNAPSHOT
+    ports:
+      - "8090:8090"
   postgres:
     build: servicesData/postgresdb/
     environment:
@@ -8,4 +16,43 @@ services:
       - 5432:5432
     volumes:
       - ./blockstorage/postgres:/var/lib/postgresql/data
-       
+  api-empresas-v1:
+    image: emerishdz/entity-service-empresas-v1:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/empresas
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "8084:8084"
+    depends_on:
+      - postgres
+  api-contratos-v1:
+    image: emerishdz/task-service-contratos-v1:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/contratos
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "8085:8085"
+    depends_on:
+      - postgres
+  api-usuarios-v1:
+    image: emerishdz/entity-service-usuarios-v1:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/usuarios
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "8083:8083"
+    depends_on:
+      - postgres
+  

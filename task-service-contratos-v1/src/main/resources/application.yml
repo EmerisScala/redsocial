@@ -1,6 +1,5 @@
-
 server:  
-  port: ${PORT:8083}
+  port: ${PORT:8085}
 
 instance.id: ${random.value}
 
@@ -49,7 +48,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: admin
     password: admin
-    url: jdbc:postgresql://localhost:5432/usuarios
+    url: jdbc:postgresql://localhost:5432/contratos
 
   jpa:
     hibernate:
