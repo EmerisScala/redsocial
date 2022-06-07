@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "ebc6d563-50fe-4583-945b-34b04d6d7784",
+		"name": "Red Social Curso Emeris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16562553"
+	},
+	"item": [
+		{
+			"name": "MSO Usuarios",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Emeris\",\n    \"apellidoPaterno\": \"Hernandez\",\n    \"apellidoMaterno\": \"Ortiz\",\n    \"correo\": \"jose.hernandezo@elektra.com.mx\",\n    \"contrasenia\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/usuarios/v1/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"usuarios",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/usuarios/v1/usuarios/60bb1bba-6cd0-4480-adcb-8939efe0dab3",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"usuarios",
+								"v1",
+								"usuarios",
+								"60bb1bba-6cd0-4480-adcb-8939efe0dab3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Certificado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Microservicios Nivel 3\",\n    \"empresaEmisora\": \"Grupo Salinas\",\n    \"fechaExpedicion\": \"2022-06-04\",\n    \"urlCredencial\": \"www.emeris.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/usuarios/v1/usuarios/60bb1bba-6cd0-4480-adcb-8939efe0dab3/certificados",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"usuarios",
+								"v1",
+								"usuarios",
+								"60bb1bba-6cd0-4480-adcb-8939efe0dab3",
+								"certificados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Experiencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"empresa\":\"Grupo Salinas\",\n    \"puesto\": \"Desarrollador de APIs 2\",\n    \"fechaInicio\": \"2020-06-04\",\n    \"fechaTermino\": \"2022-06-04\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/usuarios/v1/usuarios/60bb1bba-6cd0-4480-adcb-8939efe0dab3/experiencias",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"usuarios",
+								"v1",
+								"usuarios",
+								"60bb1bba-6cd0-4480-adcb-8939efe0dab3",
+								"experiencias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MSO Empresas",
+			"item": [
+				{
+					"name": "Crear Empresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Elektra\",\n    \"numeroUsuarioEncargado\": \"2025f242-d6be-4759-a58a-e087de44d3d0\",\n    \"contrasenia\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/empresas/v1/empresas",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"empresas",
+								"v1",
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Empresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/empresas/v1/empresas/4dd33749-2892-4773-b263-bf0fcc18a841",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"empresas",
+								"v1",
+								"empresas",
+								"4dd33749-2892-4773-b263-bf0fcc18a841"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MSO Contratos",
+			"item": [
+				{
+					"name": "Crear Vacante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idEmpresa\": \"4dd33749-2892-4773-b263-bf0fcc18a841\",\n    \"descripcion\": \"Se busca Desarrollador de APIs con 1 año de experiencia en Spring Boot.\",\n    \"posicion\": \"Desarrollador de nuevas tecnologias\",\n    \"puesto\": \"Desarrollador de APIs\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/vacantes",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"vacantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Vacante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/vacantes/09ca5e95-0fb9-493d-af4b-18df9f8191ec",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"vacantes",
+								"09ca5e95-0fb9-493d-af4b-18df9f8191ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Solicitud",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idVacante\": \"09ca5e95-0fb9-493d-af4b-18df9f8191ec\",\n    \"numeroUsuario\": \"c4b8406d-edef-4a46-9e2d-7e71cf37140a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/solicitudes",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"solicitudes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revisar Solicitud",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/solicitudes/4dfb27a6-a902-4bc5-a332-8831d91015a1",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"solicitudes",
+								"4dfb27a6-a902-4bc5-a332-8831d91015a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revisar Candidatos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/vacantes/09ca5e95-0fb9-493d-af4b-18df9f8191ec/solicitudes",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"vacantes",
+								"09ca5e95-0fb9-493d-af4b-18df9f8191ec",
+								"solicitudes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Contrato",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idSolicitud\": \"4dfb27a6-a902-4bc5-a332-8831d91015a1\",\n    \"descripcion\": \"Se te ofrece la oportunidad de formar parte de una de las mejores emrpesas.\",\n    \"beneficios\": \"Salario 100% Nomina, Prestaciones Superiores\",\n    \"montoSalario\": \"40000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Contrato",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/45758fe5-b224-4b64-a7b1-2cd06b80b994",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"45758fe5-b224-4b64-a7b1-2cd06b80b994"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Confirmacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idContrato\": \"45758fe5-b224-4b64-a7b1-2cd06b80b994\",\n    \"estatus\": false,\n    \"motivo\": \"Estoy de acuerdo con los terminos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/confirmaciones",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"confirmaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revisar Confirmacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/contratos/v1/contratos/confirmaciones/d99cd69e-8874-4fa4-8ae9-98124ed39f52",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"contratos",
+								"v1",
+								"contratos",
+								"confirmaciones",
+								"d99cd69e-8874-4fa4-8ae9-98124ed39f52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
